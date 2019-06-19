@@ -430,13 +430,15 @@ make
 sudo make install
 cd ..
 ```
+### use python3
+`ln -s /usr/bin/python3 /usr/bin/python`
 
 ### Install and compile BCC
 
 ```
 git clone https://github.com/iovisor/bcc.git
 mkdir bcc/build; cd bcc/build
-cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+cmake3 .. -DCMAKE_INSTALL_PREFIX=/usr
 make
 sudo make install
 ```

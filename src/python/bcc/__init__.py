@@ -525,8 +525,8 @@ class BPF(object):
 
     @staticmethod
     def get_kprobe_functions(event_re):
-        with open("%s/../kprobes/blacklist" % TRACEFS, "rb") as blacklist_f:
-            blacklist = set([line.rstrip().split()[1] for line in blacklist_f])
+        #with open("%s/../kprobes/blacklist" % TRACEFS, "rb") as blacklist_f:
+        #    blacklist = set([line.rstrip().split()[1] for line in blacklist_f])
         fns = []
 
         in_init_section = 0
@@ -567,8 +567,8 @@ class BPF(object):
                 # Exclude all gcc 8's extra .cold functions
                 elif re.match(b'^.*\.cold\.\d+$', fn):
                     continue
-                if (t.lower() in [b't', b'w']) and re.match(event_re, fn) \
-                    and fn not in blacklist:
+                if (t.lower() in [b't', b'w']) and re.match(event_re, fn) :
+                    #and fn not in blacklist:
                     fns.append(fn)
         return set(fns)     # Some functions may appear more than once
 
